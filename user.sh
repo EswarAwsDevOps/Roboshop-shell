@@ -12,15 +12,10 @@ cd /home/roboshop/user
 npm install
 
 
+sed -i -e 's/REDIS_ENDPOINT/172.31.17.76/' -e 's/MONGO_ENDPOINT/172.31.17.76/' systemd.service
 
-#Update `REDIS_ENDPOINT` with Redis Server IP
-
-#Update `MONGO_ENDPOINT` with MongoDB Server IP
-
-
-
-# mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service
-# systemctl daemon-reload
-# systemctl start user
-# systemctl enable user
+mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service
+systemctl daemon-reload
+systemctl restart user
+systemctl enable user
 
