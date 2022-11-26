@@ -18,12 +18,11 @@ npm install
 #$ mv cart-main cart
 ##$ npm install
 
-#Update REDIS_ENDPOINT with REDIS server IP Address
-#Update CATALOGUE_ENDPOINT with Catalogue server IP address
+
+sed -i -e 's/REDIS_ENDPOINT/172.31.17.76/' -e 's/CATALOGUE_ENDPOINT/172.31.17.76' /home/roboshop/cart/systemd.service
 
 
-
-#mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.servic
-#systemctl daemon-reload
-#systemctl start cart
-#systemctl enable cart
+mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.servic
+systemctl daemon-reload
+systemctl restart cart
+systemctl enable cart
