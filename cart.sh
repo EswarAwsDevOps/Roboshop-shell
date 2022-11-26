@@ -12,17 +12,11 @@ cd cart
 npm install
 
 
-#curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip"
-#cd /home/roboshop
-# unzip /tmp/cart.zip
-#$ mv cart-main cart
-##$ npm install
-
 
 sed -i -e 's/REDIS_ENDPOINT/172.31.17.76/' -e 's/CATALOGUE_ENDPOINT/172.31.17.76' /home/roboshop/cart/systemd.service
 
 
-mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.servic
+mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service
 systemctl daemon-reload
 systemctl restart cart
 systemctl enable cart
