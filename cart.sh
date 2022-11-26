@@ -13,7 +13,7 @@ npm install
 
 
 
-sed -i -e 's/REDIS_ENDPOINT/172.31.17.76/' -e 's/CATALOGUE_ENDPOINT/172.31.17.76' /home/roboshop/cart/systemd.service
+sed -i -e 's/REDIS_ENDPOINT/172.31.17.76/'  -e 's/CATALOGUE_ENDPOINT/172.31.17.76' /home/roboshop/cart/systemd.service
 
 
 mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service
