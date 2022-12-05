@@ -35,7 +35,12 @@ if [ -z "${SGID}" ]; then
   exit 1
 fi
 
+if [ -z "$1" ]; then
+  echo Input Component Name is needed
+  exit 1
+fi
 
-  COMPONENT="${env}-${component}"
-  create_ec2
-done
+component=$1
+COMPONENT="${env}-${component}"
+create_ec2
+
