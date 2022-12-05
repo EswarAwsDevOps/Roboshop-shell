@@ -2,7 +2,7 @@
 
 ##### Change these values ###
 ZONE_ID="Z09809822GU5CVYBGWN39"
-SG_NAME="0c45f3308cb498229"
+SG_NAME="sg-0c45f3308cb498229"
 #ENV="dev"
 #############################
 
@@ -14,11 +14,11 @@ create_ec2() {
       --instance-type t3.micro \
       --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]" "ResourceType=spot-instances-request,Tags=[{Key=Name,Value=${COMPONENT}}]"  \
       --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}"\
-      --security-group-ids ${SGID} \
+      --security-group-ids ${sg-0c45f3308cb498229} \
       | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
   sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" route53.json >/tmp/record.json
-  aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file:///tmp/record.json | jq
+  aws route53 change-resource-record-sets --hosted-zone-id ${Z09809822GU5CVYBGWN39} --change-batch file:///tmp/record.json | jq
 }
 
 
@@ -30,7 +30,7 @@ if [ -z "${AMI_ID}" ]; then
 fi
 
 SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=${SG_NAME} | jq  '.SecurityGroups[].GroupId' | sed -e 's/"//g')
-if [ -z "${SGID}" ]; then
+if [ -z "${sg-0c45f3308cb498229}" ]; then
   echo "Given Security Group does not exit"
   exit 1
 fi
