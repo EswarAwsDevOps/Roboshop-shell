@@ -2,7 +2,7 @@
 
 ##### Change these values ###
 ZONE_ID="Z09809822GU5CVYBGWN39"
-SG_NAME="sg-0c45f3308cb498229"
+SG_NAME="0c45f3308cb498229"
 #ENV="dev"
 #############################
 
