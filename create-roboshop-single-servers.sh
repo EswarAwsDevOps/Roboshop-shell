@@ -42,4 +42,4 @@ fi
 
 component=$1
 COMPONENT="${env}-${component}"
-create_ec
+create_ec2
